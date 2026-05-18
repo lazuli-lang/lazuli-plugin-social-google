@@ -1,0 +1,26 @@
+# Lazuli @plugin/social-google manifest.
+#
+# Manifest format is the forward-compat surface for plugin-contributed
+# IR types (semantic-types-plugin-locales proposal, §3.7 of the
+# hostpoint-complete-roadmap). v0.1 of this plugin contributes NO
+# semantic types — it only provides a Provider implementation that
+# binds against the @plugin/social-google adapter slot.
+#
+# Once auth/social.Provider lands as a framework contract, the
+# [contracts] block below will declare the bound interface so Lazuli
+# doctor can verify Lazurite.toml [plugins] activations.
+
+name      = "@plugin/social-google"
+version   = "0.1.0"
+module    = "github.com/lazuli-lang/lazuli-plugin-social-google"
+license   = "MIT"
+
+[provides]
+# Go-side contract this adapter implements. The framework type
+# (lazuli.dev/runtime/lazuli/auth/social.Provider) does not yet
+# exist; until it does, the Provider interface in adapter.go is the
+# binding target.
+go_interface = "lazuli.dev/runtime/lazuli/auth/social.Provider"
+
+[config]
+GOOGLE_CLIENT_ID = { required = true, description = "Google OAuth web client ID — same value used by the Expo / web app." }
