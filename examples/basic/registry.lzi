@@ -1,0 +1,15 @@
+# Minimal pilot for @plugin/social-google. Demonstrates the binding shape;
+# pair with the env vars listed in this plugin's manifest.toml.
+
+registry
+  env
+    group social_google
+      server GOOGLE_CLIENT_ID: Text required in production, stage
+
+  capabilities
+    integration social_google
+
+  bindings
+    social_google: SocialProvider
+      adapter @plugin/social-google
+      client_id env.GOOGLE_CLIENT_ID
